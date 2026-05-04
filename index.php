@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Biblioteca — Registro</title>
+    <title>Biblioteca — Iniciar sesión</title>
     <link href="./wwwroot/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./wwwroot/css/bootstrap-icons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -18,6 +18,7 @@
         --parch-dk:  #ede0c8;
         --cream:     #fdfaf4;
         --red-acc:   #8b2020;
+        --shadow:    rgba(26,18,9,0.12);
       }
 
       * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -31,6 +32,7 @@
         overflow: hidden;
       }
 
+      /* ── Left panel ─────────────────────────────────────── */
       .panel-left {
         flex: 1;
         background: var(--ink);
@@ -56,7 +58,7 @@
         content: '';
         position: absolute;
         inset: 0;
-        background: radial-gradient(ellipse at 70% 40%, rgba(200,146,42,0.10) 0%, transparent 60%);
+        background: radial-gradient(ellipse at 30% 60%, rgba(200,146,42,0.12) 0%, transparent 60%);
       }
 
       .panel-brand {
@@ -66,14 +68,20 @@
       }
 
       .panel-brand .icon-wrap {
-        width: 72px; height: 72px;
+        width: 72px;
+        height: 72px;
         border: 1px solid rgba(200,146,42,0.4);
         border-radius: 4px;
-        display: flex; align-items: center; justify-content: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         margin: 0 auto 2rem;
       }
 
-      .panel-brand .icon-wrap i { font-size: 32px; color: var(--gold); }
+      .panel-brand .icon-wrap i {
+        font-size: 32px;
+        color: var(--gold);
+      }
 
       .panel-brand h1 {
         font-family: 'Cormorant Garamond', serif;
@@ -81,9 +89,13 @@
         font-weight: 300;
         color: var(--cream);
         line-height: 1.1;
+        letter-spacing: -0.5px;
       }
 
-      .panel-brand h1 em { font-style: italic; color: var(--gold-lt); }
+      .panel-brand h1 em {
+        font-style: italic;
+        color: var(--gold-lt);
+      }
 
       .panel-brand p {
         margin-top: 1rem;
@@ -94,37 +106,26 @@
         text-transform: uppercase;
       }
 
-      .panel-steps {
+      .panel-quote {
         position: relative;
         z-index: 1;
         margin-top: 3rem;
-        display: flex;
-        flex-direction: column;
-        gap: 1.2rem;
+        max-width: 280px;
+        border-left: 2px solid var(--gold);
+        padding-left: 1rem;
       }
 
-      .step {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        opacity: 0.5;
-      }
-
-      .step .num {
-        width: 28px; height: 28px;
-        border: 1px solid var(--gold);
-        border-radius: 50%;
-        display: flex; align-items: center; justify-content: center;
+      .panel-quote p {
         font-family: 'Cormorant Garamond', serif;
-        font-size: 14px;
-        color: var(--gold);
-        flex-shrink: 0;
+        font-style: italic;
+        font-size: 17px;
+        color: rgba(255,255,255,0.5);
+        line-height: 1.6;
       }
 
-      .step p { font-size: 13px; color: rgba(255,255,255,0.55); }
-
+      /* ── Right panel ─────────────────────────────────────── */
       .panel-right {
-        width: 480px;
+        width: 460px;
         background: var(--cream);
         display: flex;
         flex-direction: column;
@@ -157,7 +158,9 @@
         margin-bottom: 2.5rem;
       }
 
-      .field-group { margin-bottom: 1.4rem; }
+      .field-group {
+        margin-bottom: 1.4rem;
+      }
 
       .field-label {
         display: block;
@@ -183,7 +186,31 @@
       }
 
       .field-input::placeholder { color: var(--parch-dk); }
-      .field-input:focus { border-color: var(--gold); background: #fffef9; }
+
+      .field-input:focus {
+        border-color: var(--gold);
+        background: #fffef9;
+      }
+
+      .remember-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 1.8rem;
+        margin-top: -0.4rem;
+      }
+
+      .remember-row input[type="checkbox"] {
+        width: 15px; height: 15px;
+        accent-color: var(--gold);
+        cursor: pointer;
+      }
+
+      .remember-row label {
+        font-size: 13px;
+        color: var(--ink-soft);
+        cursor: pointer;
+      }
 
       .btn-submit {
         width: 100%;
@@ -199,7 +226,6 @@
         text-transform: uppercase;
         cursor: pointer;
         transition: background 0.2s, transform 0.1s;
-        margin-top: 0.5rem;
         position: relative;
         overflow: hidden;
       }
@@ -236,17 +262,41 @@
       .form-footer a:hover { color: var(--gold); }
 
       .divider {
-        display: flex; align-items: center; gap: 12px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
         margin: 1.5rem 0;
       }
-      .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--parch-dk); }
-      .divider span { font-size: 11px; color: var(--parch-dk); letter-spacing: 1px; }
+
+      .divider::before, .divider::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: var(--parch-dk);
+      }
+
+      .divider span {
+        font-size: 11px;
+        color: var(--parch-dk);
+        letter-spacing: 1px;
+      }
+
+      .bib-error {
+        background: #fff5f5;
+        border: 1px solid #f5c0c0;
+        border-radius: 6px;
+        padding: 10px 14px;
+        font-size: 13px;
+        color: var(--red-acc);
+        margin-bottom: 1.4rem;
+        text-align: center;
+      }
 
       @media (max-width: 768px) {
         body { flex-direction: column; overflow: auto; }
-        .panel-left { flex: none; padding: 2.5rem 2rem; min-height: 200px; }
+        .panel-left { flex: none; padding: 2.5rem 2rem; min-height: 220px; }
         .panel-brand h1 { font-size: 38px; }
-        .panel-steps { display: none; }
+        .panel-quote { display: none; }
         .panel-right { width: 100%; padding: 2.5rem 1.5rem; }
       }
     </style>
@@ -261,36 +311,23 @@
         <h1>Biblio<br><em>teca</em></h1>
         <p>Sistema de Gestión</p>
       </div>
-      <div class="panel-steps">
-        <div class="step">
-          <div class="num">1</div>
-          <p>Crea tu cuenta con tu correo</p>
-        </div>
-        <div class="step">
-          <div class="num">2</div>
-          <p>Explora el catálogo de libros</p>
-        </div>
-        <div class="step">
-          <div class="num">3</div>
-          <p>Solicita y gestiona tus préstamos</p>
-        </div>
+      <div class="panel-quote">
+        <p>Un lector vive mil vidas antes de morir. El que no lee vive solo una.</p>
       </div>
     </div>
 
     <div class="panel-right">
-      <h2 class="form-heading">Crear cuenta</h2>
-      <p class="form-sub">Únete al sistema de biblioteca</p>
+      <h2 class="form-heading">Iniciar sesión</h2>
+      <p class="form-sub">Accede a tu cuenta de lector</p>
 
-      <form method="POST" action="usuarios.php">
-
-        <div class="field-group">
-          <label class="field-label" for="nombre">Nombre completo</label>
-          <input class="field-input" type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
-        </div>
+      <form method="POST" action="login.php">
 
         <div class="field-group">
           <label class="field-label" for="email">Correo electrónico</label>
-          <input class="field-input" type="email" id="email" name="email" placeholder="tu@correo.com" required>
+          <input class="field-input" type="email" id="email" name="email"
+            placeholder="tu@correo.com"
+            value="<?= isset($_COOKIE['recordar_email']) ? htmlspecialchars($_COOKIE['recordar_email']) : '' ?>"
+            required>
         </div>
 
         <div class="field-group">
@@ -298,13 +335,19 @@
           <input class="field-input" type="password" id="pwd" name="pwd" placeholder="••••••••" required>
         </div>
 
-        <button class="btn-submit" type="submit">Registrarse</button>
+        <div class="remember-row">
+          <input type="checkbox" id="recordar" name="recordar" value="1"
+            <?= isset($_COOKIE['recordar_email']) ? 'checked' : '' ?>>
+          <label for="recordar">Recórdame por 30 días</label>
+        </div>
+
+        <button class="btn-submit" type="submit">Entrar a la biblioteca</button>
       </form>
 
       <div class="divider"><span>· · ·</span></div>
 
       <p class="form-footer">
-        ¿Ya tienes cuenta? <a href="index.php">Inicia sesión</a>
+        ¿No tienes cuenta? <a href="registro.html">Crear cuenta</a>
       </p>
     </div>
 
