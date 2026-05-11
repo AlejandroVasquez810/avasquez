@@ -33,9 +33,7 @@ require_once 'db.php'; // Traemos el código del otro archivo
             session_start();
             $_SESSION['username'] = $usuario['email']; // Store session data
             $_SESSION['id'] = $usuario['id'];
-             $cookie_name = "id_usuario";
-            $cookie_value = $usuario['id'];
-            $expiry = time() + (86400 * 30); // Valid for 30 days
+            $cookie_name = "id_usuario";
             header("Location: dashboard.php");
             
         }else{
